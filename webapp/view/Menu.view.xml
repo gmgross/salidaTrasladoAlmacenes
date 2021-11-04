@@ -1,0 +1,88 @@
+<mvc:View controllerName="cozzuolsalidaTrasladoAlmacenes.controller.Menu" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns="sap.m">
+	<Page class="cozzuol" showHeader="false" showSubHeader="false" title="asd">
+		<Panel backgroundDesign="Transparent">
+			<FlexBox class="sapUiMediumMarginTop" height="7rem" justifyContent="Center" direction="Column" alignItems="Center">
+				<items>
+					<!--<Image class="sapUiTinyMarginBegin" densityAware="false"-->
+					<!--	src="{ value: 'cozzuol/salidaTrasladoAlmacenes/images/logo.png', formatter: 'sap.ui.require.toUrl' }">-->
+					<!--	<layoutData>-->
+					<!--		<FlexItemData growFactor="1"/>-->
+					<!--	</layoutData>-->
+					<!--</Image>-->
+				</items>
+			</FlexBox>
+		</Panel>
+		<Panel backgroundDesign="Solid">
+			<FlexBox class="princ" height="3rem" justifyContent="Center" alignItems="Center">
+				<items>
+					<core:Icon class="iconoCozz" src="sap-icon://product"/>
+					<Text text="Salida por Traslado entre Almacenes" textAlign="Center" class="cozz sapUiSmallMarginBegin"/>
+				</items>
+			</FlexBox>
+		</Panel>
+		<Panel backgroundDesign="Transparent">
+			<FlexBox height="3rem" alignItems="Center" justifyContent="Center">
+				<items>
+					
+					<ComboBox	id="centro" 
+								showSecondaryValues="true" 
+								items= "{CentrosCollection>/}" 
+								change="handleChange"
+								selectionChange = "handleCentro"
+								placeholder = "Centro">
+						<core:ListItem	key="{CentrosCollection>Werks}" 
+										text="{CentrosCollection>Name1}" 
+										additionalText="{CentrosCollection>Werks}"
+						/>
+					</ComboBox>
+				</items>
+			</FlexBox>
+			<FlexBox height="3rem" alignItems="Center" justifyContent="Center">
+				<items>
+					<ComboBox	id="origen" 
+								showSecondaryValues="true" 
+								items= "{AlmacenesCollection>/}" 
+								change="handleChange" 
+								selectionChange = "handleAlmacen1"
+								placeholder = "Almacen Origen">
+						<core:ListItem	key="{AlmacenesCollection>Lgort}" 
+										text="{AlmacenesCollection>Lgobe}" 
+										additionalText="{AlmacenesCollection>Werks}"/>
+					</ComboBox>
+				</items> 
+			</FlexBox>
+			<FlexBox height="3rem" alignItems="Center" justifyContent="Center">
+				<items>
+					<ComboBox	id="destino" 
+								showSecondaryValues="true" 
+								items= "{AlmacenesCollection>/}" 
+								change="handleChange"
+								selectionChange = "handleAlmacen2"
+								placeholder = "Almacen Destino">
+						<core:ListItem	key="{AlmacenesCollection>Lgort}" 
+										text="{AlmacenesCollection>Lgobe}" 
+										additionalText="{AlmacenesCollection>Werks}"/>
+					</ComboBox>
+				</items>
+			</FlexBox>
+			<FlexBox height="3rem" alignItems="Center" justifyContent="Center">
+				<items>
+					<ComboBox	id="pasos" 
+								showSecondaryValues="true" 
+								items= "{CantidadPasos>/items}" 
+								change="handleChange" 
+								selectionChange = "handlePasos"
+								placeholder = "Cantidad Pasos">
+						<core:ListItem	key="{CantidadPasos>CantidadPasos}" 
+										text="{CantidadPasos>Descripcion}" 
+										additionalText="{CantidadPasos>CantidadPasos}"/>
+					</ComboBox>
+				</items> 
+			</FlexBox>
+			<FlexBox height="6rem" alignItems="Center" justifyContent="Center">
+				<Button class="btnCozz" text="Escanear primer material" icon="sap-icon://qr-code" press="onQRScan" type="Emphasized"/>
+			</FlexBox>	
+		</Panel>
+	</Page>
+</mvc:View>

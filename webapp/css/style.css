@@ -1,0 +1,31 @@
+.iconoCozz {
+    font-size: 2rem;
+    color: white;
+}
+
+.cozzuol {
+    top: 2.5rem;
+    background-image: url('../css/cozzuol.jpg');
+    background-size: cover;
+}
+
+.cozz {
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+}
+
+.btnCozz {
+	font-size: 1.5rem;
+}
+
+.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: .0625rem solid #d9d9d9;
+    background-color: #000000de;
+}
+
+.sapMIBar-CTX .sapMBtn:hover>.sapMBtnHoverable.sapMBtnEmphasized:not(.sapMBtnActive), span.sapMBtnInner.sapMBtnEmphasized {
+    text-shadow: none;
+    font-size: 1.4rem;
+}

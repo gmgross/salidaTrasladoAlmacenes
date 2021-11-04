@@ -1,0 +1,238 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV" xml:lang="es" sap:schema-version="1">
+            <EntityType Name="DatosAyuda" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="field1"/>
+                </Key>
+                <Property Name="field1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAVCENTRO" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaCentro" FromRole="FromRole_AsoAyudaCentro" ToRole="ToRole_AsoAyudaCentro"/>
+                <NavigationProperty Name="NAVALMACEN" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaAlmacen" FromRole="FromRole_AsoAyudaAlmacen" ToRole="ToRole_AsoAyudaAlmacen"/>
+            </EntityType>
+            <EntityType Name="AyudaCentro" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Nombre 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AyudaAlmacen" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Lgort"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Almacén" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgobe" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Denominación" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="DatosAyudaKey" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Almacen Origen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Umlgo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Almacen Receptor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAVUNIMED" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoUniMed" FromRole="FromRole_AsoUniMed" ToRole="ToRole_AsoUniMed"/>
+                <NavigationProperty Name="NAVMATERIAL" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaMateriales" FromRole="FromRole_AsoAyudaMateriales" ToRole="ToRole_AsoAyudaMateriales"/>
+                <NavigationProperty Name="NAVCLASEVAL" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoClaseVal" FromRole="FromRole_AsoClaseVal" ToRole="ToRole_AsoClaseVal"/>
+                <NavigationProperty Name="NAVLOTES" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaLotes" FromRole="FromRole_AsoAyudaLotes" ToRole="ToRole_AsoAyudaLotes"/>
+            </EntityType>
+            <EntityType Name="AyudaMaterial" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maktx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Denominación" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AyudaUniMed" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erfme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UM entrada" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Msehl" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Texto UM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AyudaLotes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Charg"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Lote" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="AyudaClaseVal" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Bwtar"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bwtar" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Cl.valoración" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="cabeceraDoc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mblnr"/>
+                </Key>
+                <Property Name="Mblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Doc.material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Centro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Almacen Origen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Umlgo" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Almacen Receptor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Flgdos" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Flg Ind dos pasos" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Flgver" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Flg Verificacion" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAVITEM" Relationship="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.CABITEM" FromRole="FromRole_CABITEM" ToRole="ToRole_CABITEM"/>
+            </EntityType>
+            <EntityType Name="itemDoc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mblnr"/>
+                    <PropertyRef Name="Zeile"/>
+                </Key>
+                <Property Name="Mblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Doc.material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zeile" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Posición DocMat" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erfmg" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Erfme" sap:label="Ctd.en UME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erfme" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="UM entrada" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Charg" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Lote" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bwtar" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Cl.valoración" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="AsoAyudaCentro" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyuda" Multiplicity="1" Role="FromRole_AsoAyudaCentro"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaCentro" Multiplicity="*" Role="ToRole_AsoAyudaCentro"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoAyudaCentro">
+                        <PropertyRef Name="field1"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoAyudaCentro">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AsoAyudaAlmacen" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyuda" Multiplicity="1" Role="FromRole_AsoAyudaAlmacen"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaAlmacen" Multiplicity="*" Role="ToRole_AsoAyudaAlmacen"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoAyudaAlmacen">
+                        <PropertyRef Name="field1"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoAyudaAlmacen">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AsoAyudaMateriales" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyudaKey" Multiplicity="1" Role="FromRole_AsoAyudaMateriales"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaMaterial" Multiplicity="*" Role="ToRole_AsoAyudaMateriales"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoAyudaMateriales">
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoAyudaMateriales">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AsoClaseVal" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyudaKey" Multiplicity="1" Role="FromRole_AsoClaseVal"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaClaseVal" Multiplicity="*" Role="ToRole_AsoClaseVal"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoClaseVal">
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoClaseVal">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AsoAyudaLotes" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyudaKey" Multiplicity="0..1" Role="FromRole_AsoAyudaLotes"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaLotes" Multiplicity="*" Role="ToRole_AsoAyudaLotes"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoAyudaLotes">
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoAyudaLotes">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AsoUniMed" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyudaKey" Multiplicity="0..1" Role="FromRole_AsoUniMed"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaUniMed" Multiplicity="*" Role="ToRole_AsoUniMed"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_AsoUniMed">
+                        <PropertyRef Name="Werks"/>
+                    </Principal>
+                    <Dependent Role="ToRole_AsoUniMed">
+                        <PropertyRef Name="Werks"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CABITEM" sap:content-version="1">
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.cabeceraDoc" Multiplicity="1" Role="FromRole_CABITEM"/>
+                <End Type="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.itemDoc" Multiplicity="*" Role="ToRole_CABITEM"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CABITEM">
+                        <PropertyRef Name="Mblnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CABITEM">
+                        <PropertyRef Name="Mblnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="DatosAyudaSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyuda" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaCentroSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaCentro" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaAlmacenSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaAlmacen" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DatosAyudaKeySet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.DatosAyudaKey" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaMaterialSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaMaterial" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaUniMedSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaUniMed" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaLotesSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaLotes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AyudaClaseValSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AyudaClaseVal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="cabeceraDocSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.cabeceraDoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="itemDocSet" EntityType="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.itemDoc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="AsoAyudaCentroSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaCentro" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaSet" Role="FromRole_AsoAyudaCentro"/>
+                    <End EntitySet="AyudaCentroSet" Role="ToRole_AsoAyudaCentro"/>
+                </AssociationSet>
+                <AssociationSet Name="AsoClaseValSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoClaseVal" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaKeySet" Role="FromRole_AsoClaseVal"/>
+                    <End EntitySet="AyudaClaseValSet" Role="ToRole_AsoClaseVal"/>
+                </AssociationSet>
+                <AssociationSet Name="AsoAyudaAlmacenSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaAlmacen" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaSet" Role="FromRole_AsoAyudaAlmacen"/>
+                    <End EntitySet="AyudaAlmacenSet" Role="ToRole_AsoAyudaAlmacen"/>
+                </AssociationSet>
+                <AssociationSet Name="AsoAyudaLotesSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaLotes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaKeySet" Role="FromRole_AsoAyudaLotes"/>
+                    <End EntitySet="AyudaLotesSet" Role="ToRole_AsoAyudaLotes"/>
+                </AssociationSet>
+                <AssociationSet Name="CAB_ITEMSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.CABITEM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="cabeceraDocSet" Role="FromRole_CABITEM"/>
+                    <End EntitySet="itemDocSet" Role="ToRole_CABITEM"/>
+                </AssociationSet>
+                <AssociationSet Name="AsoAyudaMaterialesSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoAyudaMateriales" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaKeySet" Role="FromRole_AsoAyudaMateriales"/>
+                    <End EntitySet="AyudaMaterialSet" Role="ToRole_AsoAyudaMateriales"/>
+                </AssociationSet>
+                <AssociationSet Name="AsoUniMedSet" Association="Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV.AsoUniMed" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DatosAyudaKeySet" Role="FromRole_AsoUniMed"/>
+                    <End EntitySet="AyudaUniMedSet" Role="ToRole_AsoUniMed"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

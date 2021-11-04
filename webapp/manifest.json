@@ -1,0 +1,151 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "cozzuolsalidaTrasladoAlmacenes",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV": {
+				"uri": "/sap/opu/odata/sap/Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "cozzuolsalidaTrasladoAlmacenes.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "cozzuolsalidaTrasladoAlmacenes.i18n.i18n"
+				}
+			},
+			"CentrosCollection": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			},
+			"AlmacenesCollection": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			},
+			"CantidadPasos": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			},
+			"TableModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			},
+			"ODataSalida": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Z_MM0024_SALIDA_ENTRE_ALMACEN_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "cozzuolsalidaTrasladoAlmacenes.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false,
+				"viewLevel": 1
+			},
+			"routes": [{
+				"name": "Menu",
+				"pattern": "Menu",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Menu"]
+			}, {
+				"name": "mercaderia",
+				"pattern": "mercaderia/{Centro},{DesCentro},{Almacen1},{DesAlmacen1},{Almacen2},{DesAlmacen2},{Pasos}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["mercaderia"]
+			}],
+			"targets": {
+				"TargetApp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "App",
+					"viewName": "App"
+				},
+				"Menu": {
+					"viewType": "XML",
+					"viewName": "Menu"
+				},
+				"mercaderia": {
+					"viewType": "XML",
+					"viewName": "mercaderia"
+				}
+			}
+		}
+	}
+}
